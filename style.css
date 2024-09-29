@@ -27,7 +27,7 @@ h1 {
 
 .progress-container {
     width: 80%;
-    background-color: #ccc; 
+    background-color: #ccc;
     border-radius: 10px;
     overflow: hidden;
     margin: 20px auto;
@@ -54,6 +54,24 @@ h1 {
     }
 
     .gif-image {
-        max-width: 600px; /* Aumenta a largura da imagem em telas maiores */
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        font-size: 1.2rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .progress-container {
+        width: 90%;
+    }
+
+    .gif-image {
+        max-width: 300px;
     }
 }
