@@ -1,7 +1,7 @@
 class GraduationCountdown {
-  constructor(graduationDate) {
-    this.graduationDate = new Date(graduationDate);
-    this.startDate = new Date("2023-10-15T00:00:00");
+  constructor(startGraduationDate, finalGraduationDate) {
+    this.startGraduationDate = new Date(startGraduationDate);
+    this.finalGraduationDate = new Date(finalGraduationDate);
     this.image = {
       before: "./assets/elliot.webp",
       after: "./assets/elliot_happy.webp",
@@ -15,7 +15,7 @@ class GraduationCountdown {
 
   updateCountdown() {
     const currentDate = new Date();
-    const timeRemaining = this.graduationDate - currentDate;
+    const timeRemaining = this.finalGraduationDate - currentDate;
 
     const imageElement = document.getElementById("dynamicImage");
 
@@ -23,8 +23,9 @@ class GraduationCountdown {
       imageElement.src = this.image.after;
       document.getElementById("message").textContent = "A lili cantou! 🎉🎇";
       document.getElementById("countdown").textContent =
-        `No dia ${this.graduationDate.getDate()}/${this.graduationDate.getMonth() + 1
-        }/${this.graduationDate.getFullYear()}`;
+        `No dia ${this.finalGraduationDate.getDate()}/${
+          this.finalGraduationDate.getMonth() + 1
+        }/${this.finalGraduationDate.getFullYear()}`;
       document.getElementById("progressBar").style.width = "100%";
       return;
     }
@@ -46,7 +47,7 @@ class GraduationCountdown {
     document.getElementById("countdown").textContent =
       `(${daysRemaining} dias, ${hoursRemaining}h ${minutesRemaining}m ${secondsRemaining}s)`;
 
-    const totalDays = (this.graduationDate - this.startDate) /
+    const totalDays = (this.finalGraduationDate - this.startGraduationDate) /
       (1000 * 60 * 60 * 24);
     const progressPercentage = ((totalDays - daysRemaining) / totalDays) * 100;
     document.getElementById("progressBar").style.width =
@@ -54,5 +55,8 @@ class GraduationCountdown {
   }
 }
 
-const countdown = new GraduationCountdown("2025-03-15T00:00:00");
+const countdown = new GraduationCountdown(
+  "2023-10-15T00:00:00",
+  "2025-03-31T00:00:00",
+);
 countdown.init();
